@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TimeTableGenerator.Forms;
 using TimeTableGenerator.Forms.ConfigurationForms;
+using TimeTableGenerator.Forms.ProgramSemesterForms;
 
 namespace TimeTableGenerator
 {
@@ -18,7 +19,7 @@ namespace TimeTableGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLabs());
+            Application.Run(new frmCourses());
         }
     }
 }
