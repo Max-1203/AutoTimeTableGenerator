@@ -96,5 +96,110 @@ namespace TimeTableGenerator.SourceCode
                 cmb.DataSource = dtTypes;
             }
         }
+
+        public static void AllDays(ComboBox cmb)
+        {
+            DataTable dtlist = new DataTable();
+            dtlist.Columns.Add("DayID");
+            dtlist.Columns.Add("Name");
+            dtlist.Rows.Add("0", "---Select---");
+            try
+            {
+                DataTable dt = DatabaseLayer.Retrieve("select DayID, Name from DayTable where IsActive = 1");
+                if (dt != null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow type in dt.Rows)
+                        {
+                            dtlist.Rows.Add(type["DayID"], type["Name"]);
+                        }
+                    }
+                }
+                cmb.DataSource = dtlist;
+                cmb.ValueMember = "DayID";
+                cmb.DisplayMember = "Name";
+            }
+            catch
+            {
+                cmb.DataSource = dtlist;
+            }
+        }
+
+        public static void TimeSlotsNumber(ComboBox cmb, int n)
+        {
+            DataTable dtlist = new DataTable();
+            dtlist.Columns.Add("ID");
+            dtlist.Columns.Add("Number");
+            dtlist.Rows.Add("0", "---Select---");
+            
+            for(int i = 1; i <= n; i++)
+            {
+                dtlist.Rows.Add(i, i);
+            }
+
+            cmb.DataSource = dtlist;
+            cmb.ValueMember = "ID";
+            cmb.DisplayMember = "Number";
+            
+        }
+
+        public static void AllProfessors(ComboBox cmb)
+        {
+            DataTable dtlist = new DataTable();
+            dtlist.Columns.Add("ProfessorID");
+            dtlist.Columns.Add("FullName");
+            dtlist.Rows.Add("0", "---Select---");
+            try
+            {
+                DataTable dt = DatabaseLayer.Retrieve("select ProfessorID, FullName from ProfessorTable where IsActive = 1");
+                if (dt != null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow type in dt.Rows)
+                        {
+                            dtlist.Rows.Add(type["ProfessorID"], type["FullName"]);
+                        }
+                    }
+                }
+                cmb.DataSource = dtlist;
+                cmb.ValueMember = "ProfessorID";
+                cmb.DisplayMember = "FullName";
+            }
+            catch
+            {
+                cmb.DataSource = dtlist;
+            }
+        }
+
+        public static void AllSubjects(ComboBox cmb)
+        {
+            DataTable dtlist = new DataTable();
+            dtlist.Columns.Add("CourseID");
+            dtlist.Columns.Add("Title");
+            dtlist.Rows.Add("0", "---Select---");
+            try
+            {
+                DataTable dt = DatabaseLayer.Retrieve("select CourseID, Title from CourseTable where IsActive = 1");
+                if (dt != null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        foreach (DataRow type in dt.Rows)
+                        {
+                            dtlist.Rows.Add(type["CourseID"], type["Title"]);
+                        }
+                    }
+                }
+                cmb.DataSource = dtlist;
+                cmb.ValueMember = "CourseID";
+                cmb.DisplayMember = "Title";
+            }
+            catch
+            {
+                cmb.DataSource = dtlist;
+            }
+        }
     }
 }

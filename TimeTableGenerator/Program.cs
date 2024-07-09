@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using TimeTableGenerator.Forms;
 using TimeTableGenerator.Forms.ConfigurationForms;
 using TimeTableGenerator.Forms.ProgramSemesterForms;
+using TimeTableGenerator.Forms.TimeSlotForms;
+using TimeTableGenerator.Forms.ProfessorSubjectForms;
+
 
 namespace TimeTableGenerator
 {
@@ -19,7 +22,7 @@ namespace TimeTableGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCourses());
+            Application.Run(new frmProgramSemester());
         }
     }
 }

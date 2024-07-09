@@ -149,6 +149,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AllModels\TimeSlotsMV.cs" />
     <Compile Include="DatabaseLayer.cs" />
     <Compile Include="Forms\ConfigurationForms\frmCourses.cs">
       <SubType>Form</SubType>
@@ -204,11 +205,23 @@
     <Compile Include="Forms\HomeForm.Designer.cs">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ProfessorSubjectForms\frmProfessorSubject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ProfessorSubjectForms\frmProfessorSubject.Designer.cs">
+      <DependentUpon>frmProfessorSubject.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ProgramSemesterForms\frmProgramSemester.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ProgramSemesterForms\frmProgramSemester.Designer.cs">
       <DependentUpon>frmProgramSemester.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TimeSlotForms\frmDayTimeSlots.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TimeSlotForms\frmDayTimeSlots.Designer.cs">
+      <DependentUpon>frmDayTimeSlots.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -240,8 +253,14 @@
     <EmbeddedResource Include="Forms\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ProfessorSubjectForms\frmProfessorSubject.resx">
+      <DependentUpon>frmProfessorSubject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ProgramSemesterForms\frmProgramSemester.resx">
       <DependentUpon>frmProgramSemester.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TimeSlotForms\frmDayTimeSlots.resx">
+      <DependentUpon>frmDayTimeSlots.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

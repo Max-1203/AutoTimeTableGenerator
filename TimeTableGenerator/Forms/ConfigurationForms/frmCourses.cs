@@ -42,12 +42,12 @@ namespace TimeTableGenerator.Forms.ConfigurationForms
 
                 if (dgvCourse.Rows.Count > 0)
                 {
-                    dgvCourse.Columns[0].Width = 40;
-                    dgvCourse.Columns[1].Width = 220;
-                    dgvCourse.Columns[2].Width = 60;
-                    dgvCourse.Columns[3].Visible = false;
-                    dgvCourse.Columns[4].Width = 60;
-                    dgvCourse.Columns[5].Width = 80;
+                    dgvCourse.Columns[0].Width = 40; // CourseID
+                    dgvCourse.Columns[1].Width = 220; // Title
+                    dgvCourse.Columns[2].Width = 60; // CrHrs
+                    dgvCourse.Columns[3].Visible = false; // RoomTypeID
+                    dgvCourse.Columns[4].Width = 60; // TypeName
+                    dgvCourse.Columns[5].Width = 80; // IsActive
                 }
             }
             catch
@@ -128,7 +128,7 @@ namespace TimeTableGenerator.Forms.ConfigurationForms
                 }
             }
 
-            string insertquery = string.Format("insert into CourseTable(Title, CrHrs, RoomTypeID, IsActive) values('{0}', '{1}', '{2}', '{3}')  ", txtCourseTitle.Text.Trim(), cmbCrHrs.Text, cmbSelectType.SelectedValue, chkStatus.Checked);
+            string insertquery = string.Format("insert into CourseTable(Title, CrHrs, RoomTypeID, IsActive) values('{0}', '{1}', '{2}', '{3}')  ", txtCourseTitle.Text.Trim().ToUpper(), cmbCrHrs.Text, cmbSelectType.SelectedValue, chkStatus.Checked);
             bool result = DatabaseLayer.Insert(insertquery);
             if (result == true)
             {
@@ -181,7 +181,7 @@ namespace TimeTableGenerator.Forms.ConfigurationForms
                 }
             }
 
-            string updatequery = string.Format("update CourseTable set Title = '{0}', CrHrs = '{1}', RoomTypeID = '{2}', IsActive = '{3}' where CourseID = '{4}'", txtCourseTitle.Text.Trim(), cmbCrHrs.Text, cmbSelectType.SelectedValue, chkStatus.Checked, Convert.ToString(dgvCourse.CurrentRow.Cells[0].Value));
+            string updatequery = string.Format("update CourseTable set Title = '{0}', CrHrs = '{1}', RoomTypeID = '{2}', IsActive = '{3}' where CourseID = '{4}'", txtCourseTitle.Text.Trim().ToUpper(), cmbCrHrs.Text, cmbSelectType.SelectedValue, chkStatus.Checked, Convert.ToString(dgvCourse.CurrentRow.Cells[0].Value));
             bool result = DatabaseLayer.Update(updatequery);
             if (result == true)
             {

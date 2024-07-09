@@ -30,11 +30,11 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
                 string query = string.Empty;
                 if (string.IsNullOrEmpty(searchvalue.Trim()))
                 {
-                    query = "select ProgramSemesterID [ID], Title, ProgramSemesterIsActive [Status], ProgramID , SemesterID from v_ProgramSemesterActiveList";
+                    query = "select ProgramSemesterID [ID], Title, Capacity, ProgramSemesterIsActive [Status], ProgramID , SemesterID from v_ProgramSemesterActiveList";
                 }
                 else
                 {
-                    query = "select ProgramSemesterID [ID], Title, ProgramSemesterIsActive [Status], ProgramID , SemesterID from v_ProgramSemesterActiveList where Title like '%" + searchvalue.Trim() + "%'";
+                    query = "select ProgramSemesterID [ID], Title, Capacity, ProgramSemesterIsActive [Status], ProgramID , SemesterID from v_ProgramSemesterActiveList where Title like '%" + searchvalue.Trim() + "%'";
                 }
 
                 DataTable roomlist = DatabaseLayer.Retrieve(query);
@@ -42,11 +42,12 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
 
                 if (dgvProgramSemester.Rows.Count > 0)
                 {
-                    dgvProgramSemester.Columns[0].Width = 80;
-                    dgvProgramSemester.Columns[1].Width = 250;
-                    dgvProgramSemester.Columns[2].Width = 100;
-                    dgvProgramSemester.Columns[3].Visible = false;
-                    dgvProgramSemester.Columns[4].Visible = false;
+                    dgvProgramSemester.Columns[0].Width = 50; //ID
+                    dgvProgramSemester.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //Title
+                    dgvProgramSemester.Columns[2].Width = 90; //Capacity
+                    dgvProgramSemester.Columns[3].Width = 70; //Status
+                    dgvProgramSemester.Columns[4].Visible = false; //ProgramID
+                    dgvProgramSemester.Columns[5].Visible = false; //SemesterID
                 }
             }
             catch
@@ -94,6 +95,7 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
             txtProgramSemester.Clear();
             cmbSelectProgram.SelectedIndex = 0;
             cmbSelectSemester.SelectedIndex = 0;
+            //txtCapacity.Clear();
             chkStatus.Checked = false;
         }
 
@@ -144,6 +146,13 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
                 return;
             }
 
+            if(txtCapacity.Text.Trim().Length == 0)
+            {
+                ep.SetError(txtCapacity, "Please Enter Semester Capacity!");
+                txtCapacity.Focus();
+                return;
+            }
+
             DataTable checktitle = DatabaseLayer.Retrieve("select * from ProgramSemesterTable where ProgramID = '" + cmbSelectProgram.SelectedValue + "' and SemesterID = '" + cmbSelectSemester.SelectedValue + "'");
             if (checktitle != null)
             {
@@ -156,7 +165,7 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
                 }
             }
 
-            string insertquery = string.Format("insert into ProgramSemesterTable(Title, ProgramID, SemesterID, IsActive) values('{0}', '{1}', '{2}', '{3}')  ", txtProgramSemester.Text.Trim(), cmbSelectProgram.SelectedValue, cmbSelectSemester.SelectedValue, chkStatus.Checked);
+            string insertquery = string.Format("insert into ProgramSemesterTable(Title, ProgramID, SemesterID, IsActive, Capacity) values('{0}', '{1}', '{2}', '{3}', '{4}')  ", txtProgramSemester.Text.Trim(), cmbSelectProgram.SelectedValue, cmbSelectSemester.SelectedValue, chkStatus.Checked, txtCapacity.Text.Trim());
             bool result = DatabaseLayer.Insert(insertquery);
             if (result == true)
             {
@@ -188,9 +197,10 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
                     if (dgvProgramSemester.SelectedRows.Count == 1)
                     {
                         txtProgramSemester.Text = Convert.ToString(dgvProgramSemester.CurrentRow.Cells[1].Value);
-                        chkStatus.Checked = Convert.ToBoolean(dgvProgramSemester.CurrentRow.Cells[2].Value);
-                        cmbSelectProgram.SelectedValue = Convert.ToString(dgvProgramSemester.CurrentRow.Cells[3].Value);
-                        cmbSelectSemester.SelectedValue = Convert.ToString(dgvProgramSemester.CurrentRow.Cells[4].Value);
+                        txtCapacity.Text = Convert.ToString(dgvProgramSemester.CurrentRow.Cells[2].Value);
+                        chkStatus.Checked = Convert.ToBoolean(dgvProgramSemester.CurrentRow.Cells[3].Value);
+                        cmbSelectProgram.SelectedValue = Convert.ToString(dgvProgramSemester.CurrentRow.Cells[4].Value);
+                        cmbSelectSemester.SelectedValue = Convert.ToString(dgvProgramSemester.CurrentRow.Cells[5].Value);
                         EnableComponents();
                     }
                     else
@@ -234,6 +244,13 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
                 return;
             }
 
+            if (txtCapacity.Text.Trim().Length == 0)
+            {
+                ep.SetError(txtCapacity, "Please Enter Semester Capacity!");
+                txtCapacity.Focus();
+                return;
+            }
+
             DataTable checktitle = DatabaseLayer.Retrieve("select * from ProgramSemesterTable where ProgramID = '" + cmbSelectProgram.SelectedValue + "' and SemesterID = '" + cmbSelectSemester.SelectedValue + "' and ProgramSemesterID != '" + Convert.ToString(dgvProgramSemester.CurrentRow.Cells[0].Value) + "'");
             if (checktitle != null)
             {
@@ -246,7 +263,7 @@ namespace TimeTableGenerator.Forms.ProgramSemesterForms
                 }
             }
 
-            string updatequery = string.Format("update ProgramSemesterTable set Title = '{0}', ProgramID = '{1}', SemesterID = '{2}', IsActive = '{3}' where ProgramSemesterID = '{4}'", txtProgramSemester.Text.Trim(), cmbSelectProgram.SelectedValue, cmbSelectSemester.SelectedValue, chkStatus.Checked, Convert.ToString(dgvProgramSemester.CurrentRow.Cells[0].Value));
+            string updatequery = string.Format("update ProgramSemesterTable set Title = '{0}', ProgramID = '{1}', SemesterID = '{2}', IsActive = '{3}', Capacity = '{5}' where ProgramSemesterID = '{4}'", txtProgramSemester.Text.Trim(), cmbSelectProgram.SelectedValue, cmbSelectSemester.SelectedValue, chkStatus.Checked, Convert.ToString(dgvProgramSemester.CurrentRow.Cells[0].Value), txtCapacity.Text.Trim());
             bool result = DatabaseLayer.Update(updatequery);
             if (result == true)
             {

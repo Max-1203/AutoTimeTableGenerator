@@ -52,6 +52,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCapacity = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ep)).BeginInit();
             this.panel2.SuspendLayout();
             this.cmsOption.SuspendLayout();
@@ -64,7 +66,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(37, 112);
+            this.label1.Location = new System.Drawing.Point(37, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 23);
             this.label1.TabIndex = 16;
@@ -74,7 +76,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(37, 36);
+            this.label4.Location = new System.Drawing.Point(37, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(274, 23);
             this.label4.TabIndex = 9;
@@ -87,7 +89,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(273, 327);
+            this.btnUpdate.Location = new System.Drawing.Point(273, 361);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 52);
@@ -104,7 +106,7 @@
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(37, 327);
+            this.btnClear.Location = new System.Drawing.Point(37, 361);
             this.btnClear.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 52);
@@ -116,7 +118,7 @@
             // txtProgramSemester
             // 
             this.txtProgramSemester.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProgramSemester.Location = new System.Drawing.Point(37, 63);
+            this.txtProgramSemester.Location = new System.Drawing.Point(37, 36);
             this.txtProgramSemester.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
             this.txtProgramSemester.Name = "txtProgramSemester";
             this.txtProgramSemester.ReadOnly = true;
@@ -130,7 +132,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(273, 327);
+            this.btnSave.Location = new System.Drawing.Point(273, 361);
             this.btnSave.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 52);
@@ -146,6 +148,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DimGray;
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txtCapacity);
             this.panel2.Controls.Add(this.cmbSelectSemester);
             this.panel2.Controls.Add(this.chkStatus);
             this.panel2.Controls.Add(this.label5);
@@ -168,7 +172,7 @@
             this.cmbSelectSemester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectSemester.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSelectSemester.FormattingEnabled = true;
-            this.cmbSelectSemester.Location = new System.Drawing.Point(37, 215);
+            this.cmbSelectSemester.Location = new System.Drawing.Point(37, 188);
             this.cmbSelectSemester.Name = "cmbSelectSemester";
             this.cmbSelectSemester.Size = new System.Drawing.Size(336, 31);
             this.cmbSelectSemester.TabIndex = 21;
@@ -179,7 +183,7 @@
             this.chkStatus.AutoSize = true;
             this.chkStatus.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.chkStatus.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkStatus.Location = new System.Drawing.Point(37, 264);
+            this.chkStatus.Location = new System.Drawing.Point(37, 322);
             this.chkStatus.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
             this.chkStatus.Name = "chkStatus";
             this.chkStatus.Size = new System.Drawing.Size(308, 27);
@@ -191,7 +195,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 188);
+            this.label5.Location = new System.Drawing.Point(37, 161);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(190, 23);
             this.label5.TabIndex = 18;
@@ -202,7 +206,7 @@
             this.cmbSelectProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSelectProgram.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSelectProgram.FormattingEnabled = true;
-            this.cmbSelectProgram.Location = new System.Drawing.Point(37, 139);
+            this.cmbSelectProgram.Location = new System.Drawing.Point(37, 112);
             this.cmbSelectProgram.Name = "cmbSelectProgram";
             this.cmbSelectProgram.Size = new System.Drawing.Size(336, 31);
             this.cmbSelectProgram.TabIndex = 17;
@@ -215,7 +219,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(37, 327);
+            this.btnCancel.Location = new System.Drawing.Point(37, 361);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 52);
@@ -329,6 +333,25 @@
             this.pictureBox2.TabIndex = 42;
             this.pictureBox2.TabStop = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(37, 234);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(178, 23);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Enter Capacity";
+            // 
+            // txtCapacity
+            // 
+            this.txtCapacity.Font = new System.Drawing.Font("Lucida Sans Typewriter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCapacity.Location = new System.Drawing.Point(37, 261);
+            this.txtCapacity.Margin = new System.Windows.Forms.Padding(1, 6, 1, 6);
+            this.txtCapacity.Name = "txtCapacity";
+            this.txtCapacity.Size = new System.Drawing.Size(336, 31);
+            this.txtCapacity.TabIndex = 22;
+            // 
             // frmProgramSemester
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
@@ -385,5 +408,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chkStatus;
         private System.Windows.Forms.ComboBox cmbSelectSemester;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.MaskedTextBox txtCapacity;
     }
 }
